@@ -1,4 +1,4 @@
-#!/vagrant/flask/bin/python
+#!/usr/bin/env python
 
 import hashlib
 import zlib
@@ -22,9 +22,7 @@ from werkzeug.wrappers import Response
 
 app = Flask(__name__)
 
-app.config['DEBUG'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
-app.config['WORK_DIR'] = '/home/vagrant/openvpn-manager-work'
+app.config.from_object(json.load(open('config.json')))
 
 db = SQLAlchemy(app)
 
