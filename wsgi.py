@@ -1,4 +1,4 @@
-#!flask/bin/python
+#!/usr/bin/env python
 
 from app import app
 from tornado.httpserver import HTTPServer
