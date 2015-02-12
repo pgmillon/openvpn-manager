@@ -22,7 +22,7 @@ from werkzeug.wrappers import Response
 
 app = Flask(__name__)
 
-app.config.from_object(json.load(open('config.json')))
+app.config.update(json.load(open('config.json')))
 
 db = SQLAlchemy(app)
 
@@ -191,9 +191,7 @@ def getFilename(connection_id, file_id):
 def test():
     connection = findConnection(1)
 
-    print [filename for (_, _, filename) in walk(path.join(path.abspath(app.config['WORK_DIR']), connection.workingDir()))]
-
-    return 'Ok'
+    return app.config
 
 @app.before_first_request
 def beforeFirstRequest():
