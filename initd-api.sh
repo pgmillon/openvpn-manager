@@ -1,12 +1,30 @@
 #!/bin/bash
 
-PYTHON_HOME="/volume1/homes/ishtanzar/.python/openvpn-manager"
+PYTHON_HOME=${PYTHON_HOME:-"/volume1/homes/ishtanzar/.python/openvpn-manager"}
 APP_HOME="/volume1/homes/ishtanzar/web/openvpn-manager"
 PID_FILE="${APP_HOME}/api.pid"
 LOG_FILE="/opt/var/log/openvpn-manager-api.log"
 LOCK_FILE="/opt/var/lock/subsys/openvpn-manager-api.lock"
+DB_FILE="${APP_HOME}/data.db"
+
+function init() {
+  echo -n "Initializing OpenVPN Manager API: "
+
+  cd $APP_HOME
+  cat <<EOF | ${PYTHON_HOME}/bin/python -
+from app import db
+db.create_all()
+EOF
+
+  [ "$?" -eq "0" ] && echo "[  OK  ]" || ( echo "[FAILED]" && exit 1; )
+}
 
 function start() {
+
+  if [ ! -e $DB_FILE ]; then
+    init
+  fi
+
   echo -n "Starting OpenVPN Manager API: "
 
   if [ -e $LOCK_FILE ]; then
