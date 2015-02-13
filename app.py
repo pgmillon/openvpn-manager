@@ -277,4 +277,4 @@ manager.create_api(Process, methods=['GET', 'DELETE'], exclude_columns=['connect
                    include_methods=['href', 'connection', 'status'])
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=8888)
