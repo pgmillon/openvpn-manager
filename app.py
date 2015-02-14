@@ -142,7 +142,10 @@ class Connection(db.Model):
         return path.join(path.abspath(app.config['WORK_DIR']), self.workingDir(), self.configFile)
 
     def configuration(self):
-        return json.loads(zlib.decompress(self.config))
+        if self.config is None:
+            return {}
+        else:
+            return json.loads(zlib.decompress(self.config))
 
 
 class Process(db.Model):
@@ -270,7 +273,7 @@ def disconnect(connection_id):
 
 manager = APIManager(app, flask_sqlalchemy_db=db)
 manager.create_api(Connection,
-                   methods=['GET'],
+                   methods=['GET', 'POST', 'PUT'],
                    exclude_columns=['processesList', 'config'],
                    include_methods=['href', 'processes', 'files', 'workingDir', 'configuration'])
 manager.create_api(Process, methods=['GET', 'DELETE'], exclude_columns=['connectionId', 'parentConnection'],
