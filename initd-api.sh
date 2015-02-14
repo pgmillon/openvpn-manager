@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PYTHON_HOME=${PYTHON_HOME:-"/volume1/homes/ishtanzar/.python/openvpn-manager"}
-APP_HOME="/volume1/homes/ishtanzar/web/openvpn-manager"
+APP_HOME=${APP_HOME:-"/volume1/homes/ishtanzar/web/openvpn-manager"}
 PID_FILE="${APP_HOME}/api.pid"
 LOG_FILE="/opt/var/log/openvpn-manager-api.log"
 LOCK_FILE="/opt/var/lock/subsys/openvpn-manager-api.lock"
