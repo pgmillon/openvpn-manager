@@ -204,6 +204,10 @@ def beforeFirstRequest():
 @app.route('/api/connections/<int:connection_id>/config_file', methods=['PUT'])
 def setConfigFile(connection_id):
     connection = findConnection(connection_id)
+
+    if connection.configFile is not None:
+        deleteFiles(connection_id, connection.configFile)
+
     filename = connection.attachFile(request.files['file'])
     connection.configFile = path.basename(filename)
     db.session.add(connection)
