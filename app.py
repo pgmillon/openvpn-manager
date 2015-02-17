@@ -67,6 +67,13 @@ class Connection(db.Model):
         for process in [process for process in self.processesList if 1 == process.status()]:
             process.stop()
 
+    def getFreePort(self):
+        s = socket.socket()
+        s.bind(('', 0))
+        port = s.getsockname()[1]
+        s.close()
+        return port
+
     def connect(self):
         configFile = self.configFileAbsPath()
         socketPath = path.join(path.abspath(app.config['WORK_DIR']), self.workingDir(), "openvpn.sock")
@@ -74,6 +81,7 @@ class Connection(db.Model):
         options = [
             "openvpn",
             "--management", socketPath, "unix",
+            "--lport", str(self.getFreePort()),
             "--config", self.configFileAbsPath()
         ]
 
