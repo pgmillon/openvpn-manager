@@ -1,0 +1,13 @@
+api:
+  build: .
+  ports:
+    - "5000:8888"
+  volumes:
+    - "./:/docker"
+
+poller:
+  build: .
+  command: python /docker/cli/poller.py
+  links:
+    - api
+

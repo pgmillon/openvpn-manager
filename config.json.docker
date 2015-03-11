@@ -1,0 +1,6 @@
+{
+  "SQLALCHEMY_DATABASE_URI": "sqlite:////docker/data.db",
+  "WORK_DIR": "/docker/work",
+  "API_URL": "http://api:8888",
+  "DEBUG": true
+}

@@ -6,7 +6,7 @@ import json
 import requests
 
 
-config = json.load(open('config.json'))
+config = json.load(open('/etc/openvpn-manager/config.json'))
 
 
 class ConnectionPoller(threading.Thread):

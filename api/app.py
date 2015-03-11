@@ -22,7 +22,7 @@ from werkzeug.wrappers import Response
 
 app = Flask(__name__)
 
-app.config.update(json.load(open('config.json')))
+app.config.update(json.load(open('/etc/openvpn-manager/config.json')))
 
 db = SQLAlchemy(app)
 
