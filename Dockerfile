@@ -7,4 +7,4 @@ ADD . /docker
 
 RUN pip install -e /docker
 
-CMD python /docker/api/app.py
+CMD python /docker/openvpn_manager/api/app.py

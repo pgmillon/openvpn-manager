@@ -7,7 +7,7 @@ api:
 
 poller:
   build: .
-  command: python /docker/cli/poller.py
+  command: python /docker/openvpn_manager/cli/poller.py
   links:
     - api
 

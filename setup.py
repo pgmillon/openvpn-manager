@@ -1,6 +1,5 @@
 import codecs
-from paver.setuputils import setup
-from setuptools import find_packages
+from setuptools import find_packages, setup
 
 setup(
     name='openvpn-manager',
