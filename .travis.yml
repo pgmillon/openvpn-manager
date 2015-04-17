@@ -1,0 +1,15 @@
+language: python
+python:
+  - "2.7"
+install:
+  - pip install paver
+  - paver sdist
+deploy:
+  provider: pypi
+  user: pgmillon
+  password:
+    secure: S0UkQBHdkU+a9j++yHpl4YqKuaC2bm7jUKmMfQbrPQpYaODLM4OLuY+TAPFfZXFwcLaLIya59Xyu7zzkLR/M5kNFTwGmep2BkUVnTUdS0nkg+km7ff74j5FSfaMaBjJ4R+6DOKLz2qnhUcpriUCKYF2+BZESkOxM6lnGJwpNjCI=
+  on:
+    tags: true
+    repo: pgmillon/openvpn-manager
+  distributions: "sdist"

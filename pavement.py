@@ -1,10 +1,10 @@
 import codecs
-from paver.easy import *
 from paver.setuputils import setup
+from setuptools import find_packages
 
 setup(
     name='openvpn-manager',
-    version='1.0.0.dev1',
+    version='1.0.0.dev2',
     license='MIT',
     author='Pierre-Gildas MILLON',
     author_email='pg.millon@gmail.com',
@@ -19,6 +19,7 @@ setup(
         'Programming Language :: Python :: 2.7'
     ],
     keywords='openvpn manager',
+    packages=find_packages(),
     install_requires=[
         'flask',
         'flask_jsontools',
