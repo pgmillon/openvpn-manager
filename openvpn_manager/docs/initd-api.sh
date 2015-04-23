@@ -1,11 +1,15 @@
 #!/bin/bash
 
-PYTHON_HOME=${PYTHON_HOME:-"/volume1/homes/ishtanzar/.python/openvpn-manager"}
-APP_HOME=${APP_HOME:-"/volume1/homes/ishtanzar/web/openvpn-manager"}
-PID_FILE="${APP_HOME}/api.pid"
-LOG_FILE="/opt/var/log/openvpn-manager-api.log"
-LOCK_FILE="/opt/var/lock/subsys/openvpn-manager-api.lock"
-DB_FILE="${APP_HOME}/data.db"
+[ -r /opt/etc/default/openvpn-manager ] && . /opt/etc/default/openvpn-manager
+
+PYTHON_HOME=${PYTHON_HOME:-"/usr"}
+APP_HOME=${APP_HOME:-"/opt/openvpn-manager"}
+APP_WORK=${APP_WORK:-"$APP_HOME"}
+
+PID_FILE=${PID_FILE:-"${APP_WORK}/api.pid"}
+LOG_FILE=${LOG_FILE:-"/opt/var/log/openvpn-manager-api.log"}
+LOCK_FILE=${LOCK_FILE:-"/opt/var/lock/subsys/openvpn-manager-api.lock"}
+DB_FILE=${DB_FILE:-"${APP_WORK}/data.db"}
 
 function init() {
   echo -n "Initializing OpenVPN Manager API: "
