@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='openvpn-manager',
-    version='1.0.0.dev3',
+    version='1.0.0.dev4',
     license='MIT',
     author='Pierre-Gildas MILLON',
     author_email='pg.millon@gmail.com',
