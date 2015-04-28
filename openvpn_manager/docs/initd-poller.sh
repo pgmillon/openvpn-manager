@@ -13,7 +13,7 @@ function start() {
     echo "[PASSED]"
   else
     cd $APP_HOME
-    ${PYTHON_HOME}/bin/python ${APP_HOME}/poller.py 2>&1 > $LOG_FILE & echo $! > $PID_FILE
+    ${PYTHON_HOME}/bin/python ${APP_HOME}/cli/poller.py 2>&1 > $LOG_FILE & echo $! > $PID_FILE
     [ "$?" -eq "0" ] && echo "[  OK  ]" && touch $LOCK_FILE || echo "[FAILED]"
   fi
 }

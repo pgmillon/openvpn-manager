@@ -16,7 +16,7 @@ function init() {
 
   cd $APP_HOME
   cat <<EOF | ${PYTHON_HOME}/bin/python -
-from app import db
+from api.app import db
 db.create_all()
 EOF
 
@@ -35,7 +35,7 @@ function start() {
     echo "[PASSED]"
   else
     cd $APP_HOME
-    ${PYTHON_HOME}/bin/python ${APP_HOME}/wsgi.py 2>&1 > $LOG_FILE & echo $! > $PID_FILE
+    ${PYTHON_HOME}/bin/python ${APP_HOME}/api/wsgi.py 2>&1 > $LOG_FILE & echo $! > $PID_FILE
     [ "$?" -eq "0" ] && echo "[  OK  ]" && touch $LOCK_FILE || echo "[FAILED]"
   fi
 }
