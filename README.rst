@@ -20,7 +20,7 @@ Getting Started
 
 ::
 
-    $ git clone git@github.com:pgmillon/openvpn-manager.git
+    $ git clone https://github.com/pgmillon/openvpn-manager.git
     $ cd openvpn-manager
     $ docker-compose up
     
