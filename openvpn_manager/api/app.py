@@ -111,7 +111,7 @@ class Connection(db.Model):
         connect_try = 1
         while 1 == processEntity.status() and connect_try < 5:
             try:
-                ++connect_try
+                connect_try += 1
 
                 management.connect(socketPath)
 
